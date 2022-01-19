@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <Header />
+    <Header @search="searchFilm"/>
     <Main />
   </div>
 </template>
@@ -18,7 +18,12 @@ export default {
   components: {
     HelloWorld,
     Header,
-    Main
+    Main,
+  },
+  methods: {
+    searchFilm (searchText) {
+      
+    }
   }
 }
 </script>

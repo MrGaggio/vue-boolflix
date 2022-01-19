@@ -6,7 +6,8 @@
         v-model="inputText" 
         type="text" 
         placeholder="search">
-        <button>cerca film</button>
+        <button 
+        @click="$emit('search', inputText)">cerca film</button>
     </div>
   </header>
 </template>
