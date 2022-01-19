@@ -1,6 +1,12 @@
 <template>
   <dir>
+      <ul 
+      :key="index" 
+      v-for="(film, index) in films"  >
+          <li>
+          </li>
 
+      </ul>
   </dir>
 </template>
 
@@ -12,7 +18,7 @@ export default {
 
   data() {
     return {
-        
+        Films: []
     };
   },
   methods: {
