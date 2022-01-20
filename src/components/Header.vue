@@ -3,11 +3,11 @@
     <div class="search">
         <label for="search"></label>
         <input
-        v-model="inputText" 
+        v-model="searchText" 
         type="text" 
         placeholder="search">
         <button 
-        @click="$emit('search', inputText)">cerca film</button>
+        @click="$emit('search', searchText)">cerca film</button>
     </div>
   </header>
 </template>
@@ -17,7 +17,8 @@ export default {
   name: "Header",
     data(){
         return {
-            inputText: "",
+            searchText: "",
+            queryApi: "https://api.themoviedb.org/3/search/movie?api_key=f0278b0dff056a07e75af2bb599a91bc&query="
         }
     }
 };
