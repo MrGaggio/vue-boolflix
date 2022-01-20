@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     //prende inputText dall'Header e lo passa all'App tramite $emit('search', inputText)"
-    searchFilm (searchText) {
-      this.messaggio = searchText;
+    searchFilm (searchTxt) {
+      this.messaggio = searchTxt;
     }
   }
 }
