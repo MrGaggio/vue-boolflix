@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <Header @search="searchFilm"/>
-    <Main />
+    <Header 
+    @search="searchFilm"/>
+    <!-- model per assegnare a una variabile un valore
+     vuoto su cui girare il contenuto di inputText -->
+    <Main 
+      :msg="messaggio"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
 import Main from './components/Main.vue'
 
@@ -16,13 +19,18 @@ import Main from './components/Main.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     Header,
-    Main,
+    Main
+  },
+  data(){
+    return {
+      messaggio: ""
+    }
   },
   methods: {
+    //prende inputText dall'Header e lo passa all'App tramite $emit('search', inputText)"
     searchFilm (searchText) {
-      
+      this.messaggio = searchText;
     }
   }
 }
