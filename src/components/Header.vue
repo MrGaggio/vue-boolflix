@@ -19,7 +19,7 @@ export default {
 
         }
     },
-      methods: {
+      com: {
 
         sendText(){
           this.sendTxt = `${this.queryApi}${this.searchText}/`
