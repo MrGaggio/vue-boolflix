@@ -8,22 +8,19 @@
 
     <!-- con :cards è andato a prendere il contenuto dei props dell'array cards nel main e con =cards gli ha assegnato il valore, in questo modo sono linkati. -->
     <Main :cards="cards" />
-    <Cards />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import Main from "./components/Main.vue";
-import Cards from "./components/Cards.vue";
 import axios from "axios";
 
 export default {
   name: "App",
   components: {
     Header,
-    Main,
-    Cards,
+    Main
   },
   created() {
     //esegue la chiamata axios
