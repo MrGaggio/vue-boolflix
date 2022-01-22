@@ -1,9 +1,9 @@
 <template>
   <header>
     <div class="search">
-      <!-- <label for="search"></label>
-      <input v-model="searchText" type="text" placeholder="search" />
-      <button @click="$emit('search', searchText)">cerca film</button> -->
+      <label for="search"></label>
+      <input v-model="textSearch" type="text" placeholder="search" />
+      <button @click="$emit('search', searchText)">cerca film</button>
     </div>
   </header>
 </template>
@@ -12,7 +12,9 @@
 export default {
   name: "Header",
   data() {
-    return {};
+    return {
+      textSearch: "",
+    };
   },
 };
 </script>

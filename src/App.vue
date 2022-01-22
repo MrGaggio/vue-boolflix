@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Header />
+    <!-- passato dall header con $emit e presa qui con $event. Inserita la funzione getFilm() e sotto gli ha dato il parametro text al posto del $event in questo modo legge il contenuto del textSearch -->
+    <Header @search="getFilms($event)" />
     <Main />
     <Cards />
   </div>
@@ -21,7 +22,7 @@ export default {
   },
   created() {
     //esegue la chiamata axios
-    this.getFilms();
+    // this.getFilms();
   },
   data() {
     return {
@@ -30,14 +31,15 @@ export default {
       endpoint: 'movie',
       api_key: "f0278b0dff056a07e75af2bb599a91bc",
       language: 'en-Us',
-      ricerca: 'pippo',
+      searchText: '',
     };
   },
   methods: {
-    getFilms() {
-      // tutti i parametri necessari per effettuare la chiamata corretta, sono concatenati in modo da effettuare la chiamata come richiesto. es. chiamata corretta:
+    getFilms(text) {
+      this.searchText = text
+      // tutti i parametri necessari per effettuare la chiamata corretta, sono concatenati in modo da effettuare la chiamata come richiesto.
 
-      axios(`${this.query}${this.endpoint}?api_key=${this.api_key}&language=${this.language}&query=${this.ricerca}`)
+      axios(`${this.query}${this.endpoint}?api_key=${this.api_key}&language=${this.language}&query=${this.searchText}`)
         .then((result) => {
           console.log(result);
         })
