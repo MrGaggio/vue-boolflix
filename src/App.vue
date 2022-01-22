@@ -1,8 +1,6 @@
 <template>
   <div id="app">
     <Header />
-    <!-- model per assegnare a una variabile un valore
-     vuoto su cui girare il contenuto di inputText -->
     <Main />
     <Cards />
   </div>
@@ -29,17 +27,17 @@ export default {
     return {
       //parte fissa della chiamata
       query: "https://api.themoviedb.org/3/search/",
-      endpoint: 'movie?',
-      api_key: "api_key=f0278b0dff056a07e75af2bb599a91bc",
-      language: '&language=en-Us',
-      ricerca: '&query=testo',
+      endpoint: 'movie',
+      api_key: "f0278b0dff056a07e75af2bb599a91bc",
+      language: 'en-Us',
+      ricerca: 'pippo',
     };
   },
   methods: {
     getFilms() {
       // tutti i parametri necessari per effettuare la chiamata corretta, sono concatenati in modo da effettuare la chiamata come richiesto. es. chiamata corretta:
 
-      axios(`${this.query}${this.endpoint}${this.api_key}${this.language}${this.ricerca}`)
+      axios(`${this.query}${this.endpoint}?api_key=${this.api_key}&language=${this.language}&query=${this.ricerca}`)
         .then((result) => {
           console.log(result);
         })
