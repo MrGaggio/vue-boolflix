@@ -5,7 +5,9 @@
     Per evitare di fare una doppia chiamata nel momento in cui andranno cercate anche le serieTV, si fa la chiamata alla funzione search() che include al suo interno anche la funzione getFiml() per la ricerca dei film, il valore dell $emit in questo caso va passato alla funzione search(), che diventa quindi search(text)
 ... (text è il searchText)     -->
     <Header @searchTesto="search($event)" />
-    <Main />
+
+    <!-- con :cards è andato a prendere il contenuto dei props dell'array cards nel main e con =cards gli ha assegnato il valore, in questo modo sono linkati. -->
+    <Main :cards="cards" />
     <Cards />
   </div>
 </template>
@@ -35,6 +37,8 @@ export default {
       api_key: "f0278b0dff056a07e75af2bb599a91bc",
       language: 'en-Us',
       textText: '',
+      //cards è l'array vuoto che contiene il risultato della chiamata axios
+      cards: [],
     };
   },
   methods: {
@@ -47,7 +51,11 @@ export default {
 
       axios(`${this.query}${this.endpoint}?api_key=${this.api_key}&language=${this.language}&query=${this.textText}`)
         .then((result) => {
+          // dentro a (result).data.results si trovano i risultati della ricerca search(text)
+          this.cards = result.data.results
+          console.log(this.cards);
           console.log(result);
+
         })
         .catch((error) => {
           console.log(error);
