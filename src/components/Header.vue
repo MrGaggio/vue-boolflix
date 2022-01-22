@@ -2,8 +2,13 @@
   <header>
     <div class="search">
       <label for="search"></label>
-      <input v-model="textSearch" type="text" placeholder="search" />
-      <button @click="$emit('search', searchText)">cerca film</button>
+      <input 
+      v-model="textSearch" 
+      type="text" 
+      placeholder="search" />
+      <button 
+      @click="$emit('searchTesto', textSearch)
+      ">cerca film</button>
     </div>
   </header>
 </template>
