@@ -10,23 +10,13 @@
 export default {
   name: "Main",
 
-  props: {
-    msg: String
-  },
-
   data() {
     return {
-        films: [],
+
         
     };
   },
-    // mounted (){
-      
-    //   axios.get ("")
-    //   .then((result) => {
-    //     console.log(result);
-    //   })
-    // }
+
   
 
 }
