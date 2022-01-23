@@ -2,6 +2,7 @@
   <header>
     <div class="search">
       <label for="search"></label>
+      <i class="fab fa-500px"></i>
       <input 
       v-model="textSearch" 
       type="text" 
