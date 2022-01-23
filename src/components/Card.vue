@@ -1,6 +1,11 @@
 <template>
   <!-- :info="card" passa il contenuto dell'oggetto-->
   <div class="cards">
+    <!-- <div class="locandina">
+      <img 
+     
+      :src="require(`../assets/locandine/${poster_path}.jpg`)">
+    </div> -->
     <h1>
       {{ (info.title) ? info.title : info.name }}
     </h1>
