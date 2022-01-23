@@ -1,8 +1,8 @@
 <template>
   <dir>
-    <!-- passati tutti i dati dalla scheda Card.ve -->
-    <Card v-for="(prova1, index) in cards" :key="index"
-    :info="prova1"
+    <!-- passati tutti i dati dalla scheda Card.vue -->
+    <Card v-for="(info, index) in cards" :key="index"
+    :info="info"
     />
   </dir>
 </template>
@@ -14,6 +14,18 @@ export default {
   name: "Main",
   components: {
     Card,
+  },
+  data(){
+    return {
+      locandine: []
+      
+    }
+  },
+  methods: {
+    getPath(){
+          this.locandine = this.result.data.results[this.index].poster_path
+          console.log(this.locandine);
+    }
   },
   /* passa da App.vue a Main.vue tramite le 'props' il contenuto dell'array cards.
   // per evitare warning l'array lo si passa in questo modo:

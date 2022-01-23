@@ -30,6 +30,8 @@ export default {
     return {
       //parte fissa della chiamata
       query: "https://api.themoviedb.org/3/search/",
+      // queryPath: "https://image.tmdb.org/t/p/",
+      // sizePath: "w300/",
       endpointFilm: 'movie',
       endpointTVS: 'tv',
       api_key: "f0278b0dff056a07e75af2bb599a91bc",
@@ -39,6 +41,7 @@ export default {
       cards: [],
       film: [],
       series: [],
+      locandine: [],
 
     };
   },
@@ -52,9 +55,11 @@ export default {
 
       axios(`${this.query}${this.endpointFilm}?api_key=${this.api_key}&language=${this.language}&query=${this.textText}`)
         .then((result) => {
+          console.log(result);
           // dentro a (result).data.results si trovano i risultati della ricerca search(text)
           this.film = result.data.results
           this.cards = [...this.film, ...this.series]
+
           // per essere certi di avere tutto insieme si mette la funzione della chiamata delle serie dentro la prima, in questo modo appena finisce di fare la chiamata fa la seconda e carica successivamente
           this.getTVS()
         })
@@ -75,6 +80,20 @@ export default {
           console.log(error);
         });
     },
+      getPath() {
+      //chiamate per prendere le locandine
+
+      axios(`${this.queryPath}${this.sizePath}+parte finale`)
+        .then((result) => {
+          
+          this.series = result.data.results
+          this.cards = [...this.film, ...this.series]
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    
   },
 };
 </script>
