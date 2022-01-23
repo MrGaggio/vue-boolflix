@@ -15,12 +15,7 @@ export default {
   components: {
     Card,
   },
-  data(){
-    return {
-      locandine: []
-      
-    }
-  },
+
   methods: {
     getPath(){
           this.locandine = this.result.data.results[this.index].poster_path
