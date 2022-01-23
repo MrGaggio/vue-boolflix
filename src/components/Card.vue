@@ -2,10 +2,10 @@
   <!-- :info="card" passa il contenuto dell'oggetto-->
   <div class="cards">
     <h1>
-      {{ info.title }}
+      {{ (info.title) ? info.title : info.name }}
     </h1>
     <h2>
-      {{ info.original_title }}
+      {{ (info.original_title) ? info.original_title : info.original_name }}
     </h2>
     <div class="language">
         <!-- nel v-if verifica se original language è contenuto all'interno dell'array e lo stampa come immagine. Il require() è indispensabile per renderizzare il file png, senza non lo potrebbe caricare perchè non verrebbe incluso -->

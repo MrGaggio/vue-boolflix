@@ -46,7 +46,6 @@ export default {
     search(text){
       this.textText = text
       this.getFilms()
-      this.getTVS()
     },
     getFilms() {
       // tutti i parametri necessari per effettuare la chiamata corretta, sono concatenati in modo da effettuare la chiamata come richiesto.
@@ -56,6 +55,8 @@ export default {
           // dentro a (result).data.results si trovano i risultati della ricerca search(text)
           this.film = result.data.results
           this.cards = [...this.film, ...this.series]
+          // per essere certi di avere tutto insieme si mette la funzione della chiamata delle serie dentro la prima, in questo modo appena finisce di fare la chiamata fa la seconda e carica successivamente
+          this.getTVS()
         })
         .catch((error) => {
           console.log(error);
