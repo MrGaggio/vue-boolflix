@@ -30,29 +30,45 @@ export default {
     return {
       //parte fissa della chiamata
       query: "https://api.themoviedb.org/3/search/",
-      endpoint: 'movie',
+      endpointFilm: 'movie',
+      endpointTVS: 'tv',
       api_key: "f0278b0dff056a07e75af2bb599a91bc",
       language: 'en-Us',
       textText: '',
       //cards è l'array vuoto che contiene il risultato della chiamata axios
       cards: [],
+      film: [],
+      series: [],
+
     };
   },
   methods: {
     search(text){
       this.textText = text
       this.getFilms()
+      this.getTVS()
     },
     getFilms() {
       // tutti i parametri necessari per effettuare la chiamata corretta, sono concatenati in modo da effettuare la chiamata come richiesto.
 
-      axios(`${this.query}${this.endpoint}?api_key=${this.api_key}&language=${this.language}&query=${this.textText}`)
+      axios(`${this.query}${this.endpointFilm}?api_key=${this.api_key}&language=${this.language}&query=${this.textText}`)
         .then((result) => {
           // dentro a (result).data.results si trovano i risultati della ricerca search(text)
-          this.cards = result.data.results
-          console.log(this.cards);
-          console.log(result);
+          this.film = result.data.results
+          this.cards = [...this.film, ...this.series]
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+        getTVS() {
+      //Nuova chiamata per le serie tv. Salva nel nuovo array delle serie e dopo con l'operatore Spread (...array, ...array2) unisce i 2 array per evitare che si sovrascrivano.
 
+      axios(`${this.query}${this.endpointTVS}?api_key=${this.api_key}&language=${this.language}&query=${this.textText}`)
+        .then((result) => {
+          // dentro a (result).data.results si trovano i risultati della ricerca search(text)
+          this.series = result.data.results
+          this.cards = [...this.film, ...this.series]
         })
         .catch((error) => {
           console.log(error);

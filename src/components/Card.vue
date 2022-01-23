@@ -14,9 +14,8 @@
         :src="require(`../assets/img/${info.original_language}.png`)"
         :alt="info.original_title"
       />
-      <h3 v-else>
-        {{ info.original_language }}
-      </h3>
+      <!-- invece se non è presente stampa normalmente senza bandiera (v-else) -->
+      <h3 v-else>{{ info.original_language }}</h3>
       <p>
         {{ info.vote_average }}
       </p>
@@ -40,7 +39,7 @@ export default {
   props: {
     info: Object,
   },
-    methods:{
+    computed:{
         isAvailable(){
             if (this.availableLanguage.includes(this.info.original_language)) {
                 return true
